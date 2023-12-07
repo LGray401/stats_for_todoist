@@ -1,0 +1,32 @@
+// TaskItem.module.scss
+
+.taskItem {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-bottom: 1px solid #e0e0e0;
+    background-color: #ffffff;
+  }
+  
+  .checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+    border: 1px solid #5cb85c;
+    border-radius: 50%;
+    background-color: #5cb85c;
+  }
+  
+  .checked {
+    fill: #ffffff;
+  }
+  
+  .title {
+    flex-grow: 1;
+    text-decoration: line-through;
+    color: #686868;
+  }
+  
