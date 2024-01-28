@@ -13,9 +13,11 @@ interface TaskListProps {
   tasks: Task[];
 }
 
+//list of completed tasks
 const TaskList: React.FC<TaskListProps> = ({ tasks }) => {
   return (
     <div className={styles.taskList}>
+      <h5>Completed Tasks</h5>
       {tasks.map((task) => (
         <TaskItem key={task.id} title={task.content} />
       ))}

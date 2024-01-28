@@ -1,0 +1,28 @@
+//@import '~styles/variables'; // Assuming you have a variables file for media queries and such.
+
+.counter {
+  width: 100%; // The component now spans the full width
+  padding: 20px; // Added padding for better spacing
+  box-sizing: border-box; // Ensure padding is included in the width
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px; // Adjusted for a softer rounded corner on a full-width component
+  font-family: 'Arial', sans-serif;
+  margin: auto;
+}
+
+.number {
+  font-size: 2em; // Adjust font size to be responsive
+  font-weight: bold;
+}
+
+.text {
+  font-size: 1em; // Adjust font size to be responsive
+  color: #666;
+  margin-top: 0.5em;
+}
+

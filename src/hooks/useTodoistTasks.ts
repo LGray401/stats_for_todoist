@@ -21,7 +21,9 @@ const useCompletedTasks = (apiToken: string | undefined) => {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const url = `https://api.todoist.com/sync/v9/completed/get_all?since=2023-12-07T05:00`;
+        //get current date at 5am in ISO format
+        const isoDate = new Date(new Date().setHours(5, 0, 0, 0)).toISOString();
+        const url = `https://api.todoist.com/sync/v9/completed/get_all?since=${isoDate}`;
         const response = await fetch(url, {
           headers: {
             Authorization: `Bearer ${apiToken}`,
