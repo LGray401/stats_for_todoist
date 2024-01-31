@@ -7,5 +7,5 @@ export default defineConfig({
   define: {
     'process.env': process.env
   },
-  base: '/stats_for_todoist/'
+  base: ''
 })

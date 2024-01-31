@@ -12,7 +12,7 @@ import MainPage from './components/MainPage/MainPage';
 function App() {
   return (
     <AccessTokenProvider>
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <Routes>
           <Route path="/oauth-redirect" element={<OAuthRedirectHandler />} />
           <Route path="/" element={<MainPage />} />
