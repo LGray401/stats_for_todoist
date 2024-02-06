@@ -4,7 +4,7 @@ import { AccessTokenProvider } from './hooks/AccesTokenContext';
 
 
 
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import {Route, Routes } from 'react-router-dom';
 import OAuthRedirectHandler from './components/OAuthRedirectHandler/OAuthRedirectHandler';
 
 import MainPage from './components/MainPage/MainPage';
