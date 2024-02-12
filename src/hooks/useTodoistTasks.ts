@@ -21,8 +21,16 @@ const useCompletedTasks = (apiToken: string | undefined) => {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        //get current date at 5am in ISO format
-        const isoDate = new Date(new Date().setHours(5, 0, 0, 0)).toISOString();
+        //if current date is before 5am, get tasks from previous day
+        let date = new Date();
+
+        if (date.getHours() < 5) {
+          date.setDate(date.getDate() - 1);
+        }
+
+        date.setHours(5,0,0,0);
+
+        const isoDate = date.toISOString();
         const url = `https://api.todoist.com/sync/v9/completed/get_all?since=${isoDate}`;
         const response = await fetch(url, {
           headers: {
