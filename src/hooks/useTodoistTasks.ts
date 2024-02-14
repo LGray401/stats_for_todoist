@@ -21,7 +21,6 @@ const useCompletedTasks = (apiToken: string | undefined) => {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        //if current date is before 5am, get tasks from previous day
         let date = new Date();
 
         if (date.getHours() < 5) {
