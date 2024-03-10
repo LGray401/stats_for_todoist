@@ -19,7 +19,7 @@ const OAuthRedirectHandler: React.FC = () => {
     // exchange the code for an access token
     const exchangeToken = async () => {
       try {
-        const response = await fetch('https://statsfortodoistauthentication.azurewebsites.net/api/token', {
+        const response = await fetch('https://statsfortodoistdevelop.azurewebsites.net/api/authentication', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

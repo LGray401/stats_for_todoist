@@ -18,7 +18,7 @@ function generateState() {
 
 const MainPage: React.FC<MainPageProps> = () => {
  
-  const clientId = '13e9fbf0a15247a389dbfa85fcd08bfc'; 
+  const clientId = '98b38a30b1ac4d878602e9044e770435'; 
   const unique_state = generateState();
   const { accessToken } = useAccessToken();
 

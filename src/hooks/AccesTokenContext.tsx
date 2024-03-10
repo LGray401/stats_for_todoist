@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 interface AccessTokenContextData {
     accessToken: string | null;
@@ -12,10 +12,30 @@ const AccessTokenContext = createContext<AccessTokenContextData>({
 
 // Create a provider component
 export const AccessTokenProvider = ({ children }: { children: React.ReactNode }) => {
-  const [accessToken, setAccessToken] = useState<string | null>(null);
+  const [accessToken, setAccessTokenState] = useState<string | null>(null);
 
+  // Load access token from local storage when component mounts
+  useEffect(() => {
+    const storedAccessToken = localStorage.getItem('accessToken');
+    if (storedAccessToken) {
+      setAccessTokenState(storedAccessToken);
+    }
+  }, []);
+
+  // Save access token to local storage whenever it changes
+  useEffect(() => {
+    if (accessToken) {
+      localStorage.setItem('accessToken', accessToken);
+    } else {
+      localStorage.removeItem('accessToken');
+    }
+  }, [accessToken]);
+
+  const setAccessToken: React.Dispatch<React.SetStateAction<string | null>> = (accessToken) => {
+    setAccessTokenState(accessToken);
+  };
   return (
-    <AccessTokenContext.Provider value = {{ accessToken, setAccessToken }}>
+    <AccessTokenContext.Provider value={{ accessToken, setAccessToken }}>
       {children}
     </AccessTokenContext.Provider>
   );
