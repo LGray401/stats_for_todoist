@@ -18,7 +18,7 @@ function generateState() {
 
 const MainPage: React.FC<MainPageProps> = () => {
  
-  const clientId = '98b38a30b1ac4d878602e9044e770435'; 
+  const clientId = import.meta.env.VITE_TODOIST_CLIENT_ID as string; 
   const unique_state = generateState();
   const { accessToken } = useAccessToken();
 
