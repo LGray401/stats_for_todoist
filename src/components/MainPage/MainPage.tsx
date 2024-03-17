@@ -1,5 +1,6 @@
 import TaskList from '../TaskList/TaskList';
 import TaskCounter from '../TaskCounter/TaskCounter';
+import ProjectSelector from '../ProjectSelector/ProjectSelector';
 
 import useTodoistTasks from '../../hooks/useTodoistTasks';
 import { useAccessToken } from '../../hooks/AccesTokenContext';
@@ -44,9 +45,15 @@ const MainPage: React.FC<MainPageProps> = () => {
     return <div>Error: {error}</div>;
   }
 
+  const handleProjectSelect = (projectId: number) => {
+    // Handle project selection...
+    console.log("success" + projectId);
+  };
+
   return (
     <div className="App">
       <TaskCounter count={tasks.length} />
+      <ProjectSelector accessToken={accessToken} onProjectSelect={handleProjectSelect} />
       <div>
         <TaskList tasks={tasks} />
       </div>
