@@ -1,15 +1,21 @@
-// TaskList.module.scss
+@import "variables";
+
+.taskListHeader {
+  display: flex;
+  flex-direction: row; // Set display to column
+  justify-content: space-between;
+  border-radius: 8px;
+  margin-bottom: 5px;
+
+  & > * {
+    width: 40%;
+    margin: 0px;
+  }
+}
 
 .taskList {
-    margin: 15px;
-    padding: 0;
-    list-style-type: none;
-  }
-  
-  h5 {
-    text-align: left; 
-    margin: 0;
-    padding-top: 20px;
-    padding-bottom: 1px;
-
-  }
+  margin-top: 5px;
+  padding: 20px;
+  box-shadow: $box-shadow;
+  border-radius: $box-border-radius;
+}

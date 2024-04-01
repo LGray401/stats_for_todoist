@@ -1,8 +1,9 @@
 // TaskItem.module.scss
+@import "variables";
 
 .taskItem {
     display: flex;
-    align-items: center;
+    align-items: center;  
     padding: 8px;
     border-bottom: 1px solid #e0e0e0;
     background-color: #ffffff;
@@ -28,6 +29,7 @@
   .title {
     flex-grow: 1;
     text-decoration: line-through;
-    color: #999999;
+    color: $primary-color;
+
   }
   

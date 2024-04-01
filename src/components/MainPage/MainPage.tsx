@@ -1,6 +1,5 @@
 import TaskList from '../TaskList/TaskList';
 import TaskCounter from '../TaskCounter/TaskCounter';
-import ProjectSelector from '../ProjectSelector/ProjectSelector';
 
 import useTodoistTasks from '../../hooks/useTodoistTasks';
 import { useAccessToken } from '../../hooks/AccesTokenContext';

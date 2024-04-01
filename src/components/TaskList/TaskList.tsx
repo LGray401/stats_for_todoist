@@ -35,15 +35,17 @@ const TaskList: React.FC<TaskListProps> = ({ tasks }) => {
   const handleProjectSelect = (projectId: number) => {
     // filter tasks for project id
     console.log('id' + projectId);
-    const newFilteredTasks = tasks.filter((task) => task.project_id === projectId);
+    const newFilteredTasks = tasks.filter((task) => task.project_id == projectId);
     setFilteredTasks(newFilteredTasks);
   };
 
   return (
     console.log('tasks' + filteredTasks),
     <div className={styles.taskList}>
+      <div className={styles.taskListHeader}>
       <h5>Completed Tasks</h5>
       <ProjectSelector accessToken={accessToken} onProjectSelect={handleProjectSelect} />
+      </div>
       {filteredTasks.map((task) => (
         <TaskItem key={task.id} title={task.content} />
       ))}
