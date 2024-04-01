@@ -5,7 +5,7 @@ interface Project {
   name: string;
 }
 
-const useProjects = (accessToken: string) => {
+const useProjects = (accessToken: string|null) => {
   const [projects, setProjects] = useState<Project[]>([]);
 
   useEffect(() => {

@@ -7,7 +7,7 @@ interface Project {
 }
 
 interface ProjectSelectorProps {
-  accessToken: string;
+  accessToken: string|null;
   onProjectSelect: (projectId: number) => void;
 }
 

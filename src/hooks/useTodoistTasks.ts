@@ -7,18 +7,27 @@ interface TodoistTask {
     user_id: string;
     task_id: string;
     note_count: number;
-    project_id: string;
+    project_id: number;
     section_id: string;
     completed_at: string;
     id: string;
 }
 
-const useCompletedTasks = (apiToken: string | undefined) => {
+const useCompletedTasks = (apiToken: string | null) => {
   const [tasks, setTasks] = useState<TodoistTask[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+
+    if (!apiToken) {
+      setIsLoading(false);
+      setError('API token is required');
+      return;
+    } else {
+      setError(null)
+    };
+
     const fetchTasks = async () => {
       try {
         let date = new Date();
@@ -32,6 +41,7 @@ const useCompletedTasks = (apiToken: string | undefined) => {
         const isoDate = date.toISOString();
         const url = `https://api.todoist.com/sync/v9/completed/get_all?since=${isoDate}`;
         const response = await fetch(url, {
+
           headers: {
             Authorization: `Bearer ${apiToken}`,
           },
