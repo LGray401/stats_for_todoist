@@ -29,10 +29,11 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
 
-    - name: Build and Deploy
+    - name: Build Project
+      run: npm run build
+
+    - name: Deploy to GitHub Pages
       env:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
-      run: |
-        npm run build
-        npm run deploy -- -r https://$GH_TOKEN@github.com/LGray401/stats_for_todoist.git
+      run: npx gh-pages -d dist -t true -r https://$GH_TOKEN@github.com/LGray401/stats_for_todoist.git -b gh-pages
 
