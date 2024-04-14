@@ -21,12 +21,13 @@ const MainPage: React.FC<MainPageProps> = () => {
   const clientId = import.meta.env.VITE_TODOIST_CLIENT_ID as string; 
   const unique_state = generateState();
   const { accessToken } = useAccessToken();
+  const { tasks, isLoading, error } = useTodoistTasks(accessToken);
 
   //check if accessToken is exists otherwise request for authorization
   if (!accessToken) {
     // Construct the authorization URL
     const authorizationUrl = `https://todoist.com/oauth/authorize?client_id=${clientId}&scope=data:read&state=${unique_state}`;
-
+    
     return (
       <div className="App">
         <a href={authorizationUrl}>Authorize with Todoist</a>
@@ -34,7 +35,6 @@ const MainPage: React.FC<MainPageProps> = () => {
     );
   }
 
-  const { tasks, isLoading, error } = useTodoistTasks(accessToken);
 
   if (isLoading) {
     return <div>Loading tasks...</div>;
@@ -44,9 +44,11 @@ const MainPage: React.FC<MainPageProps> = () => {
     return <div>Error: {error}</div>;
   }
 
+
   return (
     <div className="App">
       <TaskCounter count={tasks.length} />
+    
       <div>
         <TaskList tasks={tasks} />
       </div>
