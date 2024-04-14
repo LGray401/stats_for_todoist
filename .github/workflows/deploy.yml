@@ -31,5 +31,8 @@ jobs:
 
     - name: Build and Deploy
       env:
-        GH_TOKEN: ${{ secrets.GH_TOKEN }}
-      run: npm run deploy
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        npm run build
+        npm run deploy -- -r https://$GH_TOKEN@github.com/LGray401/stats_for_todoist.git
+

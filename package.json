@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist -t true -r https://github.com/LGray401/stats_for_todoist.git -b gh-pages -o GitHub Actions",
+    "deploy": "gh-pages -d dist -t true -r https://<token>@github.com/LGray401/stats_for_todoist.git -b gh-pages",
     "dev": "vite",
     "build": "tsc && vite build --mode production",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
