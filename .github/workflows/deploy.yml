@@ -24,13 +24,12 @@ jobs:
     - name: Replace environment variables
       run: cp .env.production .env
 
-    - name: Deploy to GitHub Pages
-      env:
-        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+    - name: Set Git Config
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        npx gh-pages -d dist -b gh-pages -t true -o -r https://${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.git
 
     - name: Build and Deploy
-      run: npm run deploy 
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: npm run deploy
