@@ -24,5 +24,10 @@ jobs:
     - name: Replace environment variables
       run: cp .env.production .env
 
+    - name: Set Git Config
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
     - name: Build and Deploy
       run: npm run deploy 
