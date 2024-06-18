@@ -1,0 +1,41 @@
+name: Deploy to GitHub Pages on Merge
+
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - 'main/**'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '21'  
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Replace environment variables
+      run: cp .env.production .env
+
+    - name: Set Git Config
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+
+    - name: Build Project
+      run: npm run build
+
+    - name: Deploy to GitHub Pages
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      run: npx gh-pages -d dist -t true -r https://$GH_TOKEN@github.com/LGray401/stats_for_todoist.git -b gh-pages
+
