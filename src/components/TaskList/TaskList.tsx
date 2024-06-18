@@ -18,8 +18,10 @@ const TaskList: React.FC<TaskListProps> = ({ tasks }) => {
   return (
     <div className={styles.taskList}>
       <h5>Completed Tasks</h5>
-      {tasks.map((task) => (
-        <TaskItem key={task.id} title={task.content} />
+      {tasks
+        .filter(task => !task.content.includes('@no_track'))
+        .map((task) => (
+          <TaskItem key={task.id} title={task.content} />
       ))}
     </div>
   );
