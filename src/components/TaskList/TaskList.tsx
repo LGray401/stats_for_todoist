@@ -47,6 +47,7 @@ const TaskList: React.FC<TaskListProps> = ({ tasks }) => {
       <ProjectSelector accessToken={accessToken} onProjectSelect={handleProjectSelect} />
       </div>
       {filteredTasks
+      //filter out tasks with @no_track
         .filter(task => !task.content.includes('@no_track'))
         .map((task) => (
           <TaskItem key={task.id} title={task.content} />
