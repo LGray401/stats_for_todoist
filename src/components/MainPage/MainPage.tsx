@@ -47,7 +47,7 @@ const MainPage: React.FC<MainPageProps> = () => {
 
   return (
     <div className="App">
-      <TaskCounter count={tasks.length} />
+      <TaskCounter count={tasks.filter(task => !task.content.includes('@no_track')).length} />
     
       <div>
         <TaskList tasks={tasks} />
