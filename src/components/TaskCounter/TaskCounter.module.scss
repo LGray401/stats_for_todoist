@@ -1,5 +1,4 @@
-//@import '~styles/variables'; // Assuming you have a variables file for media queries and such.
-
+@import 'variables'; 
 .counter {
   width: 100%; // The component now spans the full width
   padding: 20px; // Added padding for better spacing
@@ -9,8 +8,8 @@
   align-items: center;
   justify-content: center;
   background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 8px; // Adjusted for a softer rounded corner on a full-width component
+  box-shadow: $box-shadow; // Use the box shadow variable
+  border-radius: $box-border-radius; // Adjusted for a softer rounded corner on a full-width component
   font-family: 'Arial', sans-serif;
   margin: auto;
 }
@@ -24,7 +23,7 @@
 
 .text {
   font-size: 1em; // Adjust font size to be responsive
-  color: #666;
+  color: $secondary-color;
   margin-top: 0.5em;
 }
 
